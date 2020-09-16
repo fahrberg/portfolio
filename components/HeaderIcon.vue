@@ -5,6 +5,7 @@
     :viewBox="viewBox"
     class="HeaderIcon"
     @mouseenter="hoverEnter"
+    @mouseleave="hoverLeave"
     @click="$emit('click')"
   >
     <rect
@@ -136,7 +137,7 @@ export default {
     hoverEnter(e) {
       if (e.target.className.baseVal === 'HeaderIcon') {
         // eslint-disable-next-line no-console
-        console.log(e)
+        console.log('EEE')
       } else {
         this.originalColor = e.target.style.fill
         // eslint-disable-next-line no-console
@@ -150,6 +151,7 @@ export default {
       if (e.target.className.baseVal === 'HeaderIcon') {
         // eslint-disable-next-line no-console
         console.log(e.target)
+        e.target.style.filter = 'none'
       } else {
         // eslint-disable-next-line no-console
 
@@ -161,7 +163,11 @@ export default {
 }
 </script>
 
-<style lang="postcss" scoped>
+<style lang="scss" scoped>
+.HeaderIcon {
+  margin: 40px 0 40px 0;
+  @apply inline-block;
+}
 svg.haiiroIcon {
   display: inline-block;
   transition: ease 0.5s;

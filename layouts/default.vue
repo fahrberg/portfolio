@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <HeaderIcon />
+  <div class="">
+    <Header />
     <Nuxt />
   </div>
 </template>

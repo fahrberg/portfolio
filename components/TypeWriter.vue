@@ -1,22 +1,11 @@
 <template>
-  <div class="container">
+  <div class="">
     <div ref="typedElement" class="hero-title">
       {{ typedObj }}
       <span>&nbsp;</span>
     </div>
-    <div class="hero-description">
-      <p>
-        Hello!<br />I'm <span class="text-lb">Fredrik Åhrberg</span> a
-        <span class="text-lb">Freelance Developer</span> based in
-        <span class="text-lb">Stockholm, Sweden</span><br />
-        My main focus has always been development towards the web, and I have
-        experience in the following
-        <span class="text-gr">languages</span>/frameworks/tools: HTML,
-        CSS(SCSS), JavaScript, PHP, Swift, Node.js, Vue, Nuxt, React,
-        WordPress(WooCommerce), Ghost, Nginx, Apache, Git.
-      </p>
-      <slot></slot>
-    </div>
+
+    <slot></slot>
   </div>
 </template>
 
@@ -32,6 +21,7 @@ export default {
   data() {
     return {
       typedObj: null,
+      finishedAnimation: false,
     }
   },
   mounted() {
@@ -54,6 +44,10 @@ export default {
             str += c
           } else {
             str += `${c} ↵`
+            // eslint-disable-next-line no-console
+            console.log('finished')
+            this.$emit('finishedAnimation')
+            console.log('emitted')
           }
           this.typedObj = str
         }, delay + typeSpeed)
