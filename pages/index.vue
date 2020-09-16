@@ -1,44 +1,49 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">portfolio</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+  <TypeWriter :my-text="'whoami'" />
 </template>
 
 <script>
 export default {}
 </script>
 
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
+<style lang="scss">
 .container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
+  @apply w-full;
 }
-*/
+.hero-title {
+  @apply w-full flex;
+  font-family: 'Monaco', Consolas, 'Lucida Console', monospace;
+  font-size: 4.5em;
+
+  &:before {
+    color: #6ba6e6;
+    content: '>\a0';
+  }
+
+  span {
+    background-color: transparent;
+    animation: caret 1s steps(1) 2;
+  }
+
+  @keyframes caret {
+    50% {
+      background-color: rgba(110, 238, 232, 0.65);
+    }
+  }
+}
+.text-lb {
+  color: rgb(110, 238, 232);
+}
+.hero-description {
+  @apply flex w-full text-left;
+  font-family: 'Monaco', Open Sans, Segoe UI, sans-serif;
+  font-weight: 200;
+  font-size: 1.3em;
+  line-height: 40px;
+}
 .container {
   margin: 0 auto;
   min-height: 100vh;
-  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;

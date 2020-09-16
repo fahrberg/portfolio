@@ -8,6 +8,7 @@ module.exports = {
     parser: 'babel-eslint',
   },
   extends: [
+    'airbnb',
     '@nuxtjs',
     'prettier',
     'prettier/vue',
