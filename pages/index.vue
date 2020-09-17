@@ -1,7 +1,10 @@
 <template>
-  <div class="container">
+  <div class="container w-full">
     <TypeWriter :my-text="'whoami'" @finishedAnimation="consoleLog" />
-    <div class="hero-description" :class="{ hide: !show }">
+    <div
+      class="hero-description flex w-full text-left"
+      :class="{ hide: !show }"
+    >
       <p @click="consoleLog()">
         Hello!<br />I'm <span class="text-lb">Fredrik Åhrberg</span> a
         <span class="text-lb">Freelance Developer</span> based in
@@ -17,16 +20,31 @@
 </template>
 
 <script>
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { mapActions } from 'vuex'
+
 export default {
   data() {
     return {
       show: false,
     }
   },
+
+  mounted() {
+    this.go()
+  },
   methods: {
     consoleLog() {
       // eslint-disable-next-line no-console
       this.show = true
+    },
+    ...mapActions({
+      updateDefaultColors: 'colors/updateDefaultColors',
+    }),
+    go() {
+      // eslint-disable-next-line no-console
+      console.log('commit')
+      this.updateDefaultColors()
     },
   },
 }
@@ -36,42 +54,18 @@ export default {
 .hide {
   display: none !important;
 }
-.container {
-  @apply w-full;
-}
-.hero-title {
-  @apply w-full flex;
-  font-family: 'Monaco', Consolas, 'Lucida Console', monospace;
-  font-size: 4.5em;
 
-  &:before {
-    color: #6ba6e656;
-    content: '>\a0';
-  }
-
-  span {
-    background-color: transparent;
-    animation: caret 1s steps(1) 2;
-  }
-
-  @keyframes caret {
-    50% {
-      background-color: rgba(110, 238, 232, 0.65);
-    }
-  }
-}
 .text-lb {
   color: #6ba6e6;
 }
 .hero-description {
-  @apply flex w-full text-left;
   font-family: 'Monaco', Open Sans, Segoe UI, sans-serif;
   font-weight: 200;
   font-size: 1.3em;
   line-height: 40px;
-  -webkit-animation-duration: 1s;
-  -webkit-animation-fill-mode: backwards;
-  -webkit-animation-name: fadeInDown;
+  animation-duration: 1s;
+  animation-fill-mode: backwards;
+  animation-name: fadeInDown;
 }
 .container {
   margin: 0 auto;
@@ -103,14 +97,14 @@ export default {
   padding-top: 15px;
 }
 
-@-webkit-keyframes fadeInDown {
+@keyframes fadeInDown {
   0% {
     opacity: 0;
-    -webkit-transform: translateY(0);
+    transform: translateY(0);
   }
   100% {
     opacity: 1;
-    -webkit-transform: translateY(0);
+    transform: translateY(0);
   }
 }
 </style>

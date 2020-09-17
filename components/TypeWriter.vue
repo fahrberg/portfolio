@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <div ref="typedElement" class="hero-title">
+    <div ref="typedElement" class="hero-title w-full flex">
       {{ typedObj }}
       <span>&nbsp;</span>
     </div>
@@ -25,8 +25,6 @@ export default {
     }
   },
   mounted() {
-    // eslint-disable-next-line no-console
-    console.log(this.myText)
     this.typeWriter(this.myText, 50, 90, 700)
   },
   destroyed() {
@@ -44,10 +42,7 @@ export default {
             str += c
           } else {
             str += `${c} ↵`
-            // eslint-disable-next-line no-console
-            console.log('finished')
             this.$emit('finishedAnimation')
-            console.log('emitted')
           }
           this.typedObj = str
         }, delay + typeSpeed)
@@ -56,3 +51,27 @@ export default {
   },
 }
 </script>
+<style lang="scss">
+.hero-title {
+  font-family: 'Monaco', Consolas, 'Lucida Console', monospace;
+  font-size: 4.5em;
+
+  &:before {
+    color: #6ba6e656;
+    content: '>\a0';
+    animation: 1s appear;
+    transition: ease 0.5s;
+  }
+
+  span {
+    background-color: transparent;
+    animation: caret 1s steps(1) 2;
+  }
+
+  @keyframes caret {
+    50% {
+      background-color: rgba(110, 238, 232, 0.65);
+    }
+  }
+}
+</style>
