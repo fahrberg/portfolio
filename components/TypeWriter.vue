@@ -1,11 +1,7 @@
 <template>
-  <div class="">
-    <div ref="typedElement" class="hero-title w-full flex">
-      {{ typedObj }}
-      <span>&nbsp;</span>
-    </div>
-
-    <slot></slot>
+  <div ref="typedElement" class="hero-title w-full">
+    {{ typedObj }}
+    <span>&nbsp;</span>
   </div>
 </template>
 
@@ -24,8 +20,13 @@ export default {
       finishedAnimation: false,
     }
   },
-  mounted() {
-    this.typeWriter(this.myText, 50, 90, 700)
+  watch: {
+    myText: {
+      immediate: true,
+      handler() {
+        this.typeWriter(this.myText, 50, 90, 0)
+      },
+    },
   },
   destroyed() {
     this.typedObj.destroy()
@@ -42,6 +43,7 @@ export default {
             str += c
           } else {
             str += `${c} ↵`
+            this.finishedAnimation = true
             this.$emit('finishedAnimation')
           }
           this.typedObj = str

@@ -55,11 +55,12 @@ export default {
     '@nuxtjs/eslint-module',
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/router-extras',
   ],
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: ['@nuxt/content'],
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/

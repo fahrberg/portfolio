@@ -1,9 +1,9 @@
 <template>
   <nav id="headerLinks" class="my-auto">
-    <nuxt-link :class="{ active: $route.path == '/' }" to="/"> Work</nuxt-link>
-    <nuxt-link :class="{ active: $route.path == '/about' }" to="/about">
-      About</nuxt-link
+    <nuxt-link :class="{ active: $route.path == '/work' }" to="/work">
+      Work</nuxt-link
     >
+    <nuxt-link :class="{ active: $route.path == '/' }" to="/"> About</nuxt-link>
   </nav>
 </template>
 

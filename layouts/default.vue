@@ -4,6 +4,15 @@
     <Nuxt />
   </div>
 </template>
+<script>
+export default {
+  computed: {
+    head() {
+      return { title: this.$route.name }
+    },
+  },
+}
+</script>
 
 <style>
 html {
