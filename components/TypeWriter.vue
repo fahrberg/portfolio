@@ -1,7 +1,7 @@
 <template>
-  <div ref="typedElement" class="hero-title w-full">
+  <div ref="typedElement" class="typewriter-title w-full text-3xl lg:text-6xl">
     {{ typedObj }}
-    <span>&nbsp;</span>
+    <span :class="{ caret: showCaret }">&nbsp;</span>
   </div>
 </template>
 
@@ -18,56 +18,76 @@ export default {
     return {
       typedObj: null,
       finishedAnimation: false,
+      showCaret: true,
     }
   },
   watch: {
     myText: {
       immediate: true,
       handler() {
-        this.typeWriter(this.myText, 50, 90, 0)
+        this.typeWriter(this.myText, 70, 100, 200)
       },
     },
   },
   destroyed() {
     this.typedObj.destroy()
+    this.showCaret = true
   },
   methods: {
     typeWriter(text, minSpeed, maxSpeed, delay) {
       let str = ''
       let typeSpeed = 0
-      const last = [...this.myText.split('')].pop()
-      this.myText.split('').forEach((c) => {
+      const arr = [...this.myText.split('')]
+      // const last = [...this.myText.split('')].pop()
+      arr.forEach((c, index) => {
         typeSpeed += Math.random() * (maxSpeed - minSpeed) + minSpeed
         setTimeout(() => {
-          if (c !== last) {
+          if (arr.length - 1 !== index) {
             str += c
           } else {
             str += `${c} ↵`
-            this.finishedAnimation = true
-            this.$emit('finishedAnimation')
+            setTimeout(() => {
+              this.showCaret = false
+              this.finishedAnimation = true
+              this.$emit('finishedAnimation')
+            }, 200)
           }
           this.typedObj = str
         }, delay + typeSpeed)
       })
+      // this.myText.split('').forEach((c) => {
+      //   typeSpeed += Math.random() * (maxSpeed - minSpeed) + minSpeed
+      //   setTimeout(() => {
+      //     if (c !== last) {
+      //       str += c
+      //     } else {
+      //       str += `${c} ↵`
+      //       setTimeout(() => {
+      //         this.showCaret = false
+      //         this.finishedAnimation = true
+      //         this.$emit('finishedAnimation')
+      //       }, 200)
+      //     }
+      //     this.typedObj = str
+      //   }, delay + typeSpeed)
+      // })
     },
   },
 }
 </script>
 <style lang="scss">
-.hero-title {
+.typewriter-title {
   font-family: 'Monaco', Consolas, 'Lucida Console', monospace;
-  font-size: 4.5em;
-
   &:before {
     color: #6ba6e656;
-    content: '>\a0';
+    content: '>';
     animation: 1s appear;
     transition: ease 0.5s;
   }
 
-  span {
+  span.caret {
     background-color: transparent;
-    animation: caret 1s steps(1) 2;
+    animation: caret 1s steps(1) infinite;
   }
 
   @keyframes caret {

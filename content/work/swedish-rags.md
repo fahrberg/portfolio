@@ -1,9 +1,9 @@
 ---
-title: Nilvander Ateljeer2
+title: Nilvander Ateljeer
 year: 2010
 owner: Pontus Nilvander
 role: UI Design, Developer
-img: thumbnail.png
+img: rags.jpg
 description: One of the greatest interior designers in Sweden
 ---
 
