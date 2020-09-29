@@ -1,16 +1,16 @@
 <template>
   <div v-if="finishedAnimation" class="container w-full p-6 lg:p-0">
-    <h1>{{ work.title }}</h1>
-    <p>{{ work.description }}</p>
-
-    <img :src="work.img" :alt="work.alt" />
     <transition appear name="text-fade">
       <nuxt-content v-if="finishedAnimation" :document="work" />
     </transition>
+    <prev-next :prev="prev" :next="next" />
   </div>
 </template>
 
 <script>
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { mapMutations } from 'vuex'
+
 export default {
   transition: {
     name: 'home',
@@ -19,12 +19,27 @@ export default {
   async asyncData({ $content, params }) {
     const work = await $content('work', params.slug).fetch()
 
-    return { work }
+    const [prev, next] = await $content('work')
+      .only(['title', 'slug'])
+      .sortBy('createdAt', 'asc')
+      .surround(params.slug)
+      .fetch()
+
+    return { work, prev, next }
   },
   computed: {
     finishedAnimation() {
       return this.$store.state.finishedAnimation
     },
+  },
+  methods: {
+    ...mapMutations({
+      setFinishedAnimation: 'setFinishedAnimation',
+    }),
+  },
+
+  beforeDestroy() {
+    this.setFinishedAnimation(false)
   },
 }
 </script>

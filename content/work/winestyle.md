@@ -1,10 +1,20 @@
 ---
 title: WineStyle Nordic AB
 year: 2010
-owner: Pontus Nilvander
-role: UI Design, Developer
+owner: WineStyle Nordic AB
+role: UI Design, Developer, Tech support
 img: winestyle.jpg
-description: One of the greatest interior designers in Sweden
+description: A wine importing business.
 ---
 
-# Nilvander Ateljeer
+# Winestyle Nordic AB
+
+A webshop build for this wine importing business
+
+## Description
+
+This website was build with WordPress as a CMS, and WooCommerce as e-commerce solution.
+
+## Role
+
+UI Design, Developer, Tech-support, Setting up servers and mail-structure for the company.

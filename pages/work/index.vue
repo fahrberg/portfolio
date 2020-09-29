@@ -13,7 +13,9 @@
               side-projects and work for different clients. Although my work
               over the years has not been limited to Software Engineering; this
               portfolio will only showcase work where my role has either been
-              front- or backend development.
+              front- or backend development. The goal for the future is that
+              every project will have its on 'blog' with thoughts and
+              reflections that come up during development.
             </p>
           </div>
         </div>

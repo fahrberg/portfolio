@@ -12,8 +12,7 @@
               >
             </p></span
           >
-          a Freelance Web Developer based in
-          <span class="text-lb">Stockholm, Sweden</span><br />
+          a Freelance Web Developer based in Stockholm, Sweden<br />
           My main focus has always been development towards the web, and I have
           experience in the following
 
