@@ -415,7 +415,7 @@ export default {
   transition: max-height, 1.5s linear;
 } */
 .home-whoami {
-  font-family: 'Monaco', Open Sans, Segoe UI, sans-serif;
+  font-family: 'Monaco';
   font-weight: 200;
   font-size: 1.3em;
   line-height: 40px;
