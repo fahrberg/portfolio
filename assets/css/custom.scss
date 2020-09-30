@@ -10,6 +10,13 @@ $not-narrow: '(min-width: 768px)';
   --not-narrow: #{$not-narrow};
 }
 
+@font-face {
+  font-family: 'Monaco';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Monaco'), url('~assets/css/Monaco.woff') format('woff');
+}
+
 @mixin breakpoint($class) {
   @if $class == narrow {
     @media (max-width: 767px) {
