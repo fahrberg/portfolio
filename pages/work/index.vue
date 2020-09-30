@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container w-full mx-auto p-6 lg:p-0">
+    <div class="container w-full mx-auto p-6 md:p-0 lg:p-0">
       <transition
         appear
         name="text-fade"
@@ -14,7 +14,7 @@
               over the years has not been limited to Software Engineering; this
               portfolio will only showcase work where my role has either been
               front- or backend development. The goal for the future is that
-              every project will have its on 'blog' with thoughts and
+              every project will have its own 'blog' with thoughts and
               reflections that come up during development.
             </p>
           </div>

@@ -1,5 +1,5 @@
 <template>
-  <header class="portfolio-header container mx-auto top-0 p-6 lg:p-0">
+  <header class="portfolio-header container mx-auto top-0 p-6 md:p-0 lg:p-0">
     <div class="header-top lg:static mx-auto flex justify-between top-0">
       <HeaderIcon />
       <Navigation />

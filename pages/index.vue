@@ -118,7 +118,7 @@
                 ></path>
               </svg>
             </a>
-            <a href="">
+            <a href="resume.pdf">
               <svg
                 id="Capa_1"
                 version="1.1"
@@ -349,6 +349,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~/assets/css/custom.scss';
 .list-complete-item {
   transition: all 1s;
   display: inline-block;

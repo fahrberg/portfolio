@@ -1,0 +1,33 @@
+$wide: '(min-width: 1440px)';
+$medium: '(min-width: 768px) and (max-width: 1440px)';
+$narrow: '(max-width: 768px)';
+$not-narrow: '(min-width: 768px)';
+
+:root {
+  --wide: #{$wide};
+  --medium: #{$medium};
+  --narrow: #{$narrow};
+  --not-narrow: #{$not-narrow};
+}
+
+@mixin breakpoint($class) {
+  @if $class == narrow {
+    @media (max-width: 767px) {
+      @content;
+    }
+  } @else if $class == notNarrow {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $class == medium {
+    @media (min-width: 768px) and (max-width: 1280px) {
+      @content;
+    }
+  } @else if $class == lg {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint mixin supports: xs, sm, md, lg";
+  }
+}

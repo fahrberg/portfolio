@@ -86,6 +86,8 @@ export default {
 }
 </script>
 <style lang="scss">
+@import '~/assets/css/custom.scss';
+
 $hoverDefault: cubic-bezier(0.23, 1, 0.32, 1);
 $default: cubic-bezier(0.445, 0.05, 0.55, 0.95);
 .dashed {
@@ -213,14 +215,15 @@ $default: cubic-bezier(0.445, 0.05, 0.55, 0.95);
 
 .works {
   display: grid;
+  custom: $medium;
   grid-template-columns: repeat(auto-fill, minmax(412px, 1fr));
   grid-column-gap: 1.66%;
   grid-row-gap: 50px;
-  @media (--medium) {
+  @include breakpoint(medium) {
     grid-template-columns: repeat(2, 6fr);
     grid-column-gap: 2.63%;
   }
-  @media (--narrow) {
+  @include breakpoint(narrow) {
     grid-template-columns: repeat(1, 12fr);
     grid-column-gap: 0;
     grid-row-gap: 40px;
